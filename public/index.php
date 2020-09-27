@@ -31,6 +31,9 @@ require __DIR__ . '/../src/routes.php';
 require __DIR__ . '/../app/Product/Controllers/Get.php';
 
 // Get User Cart Controller
+require __DIR__ . '/../app/Product/Controllers/Order.php';
+
+// Get User Cart Controller
 require __DIR__ . '/../app/Product/Controllers/Cart.php';
 
 //User Store Cart Controller

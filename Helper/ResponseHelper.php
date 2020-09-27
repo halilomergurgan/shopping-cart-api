@@ -7,7 +7,7 @@ class ResponseHelper
      * @param $statusCode
      * @return \Slim\Http\Response
      */
-    public static function success($message, $statusCode)
+    public static function success(string $message, int $statusCode)
     {
         $response = new \Slim\Http\Response();
 
@@ -25,7 +25,7 @@ class ResponseHelper
      * @param $statusCode
      * @return \Slim\Http\Response
      */
-    public static function error($message, $statusCode)
+    public static function error(string $message, int $statusCode)
     {
         $data = [
             'status' => false,
@@ -38,14 +38,13 @@ class ResponseHelper
         return $response->withStatus($statusCode)->withHeader("Content-Type", "application/json")->withJson($data);
     }
 
-    public static function compact($message, $statusCode, $data = [])
+    public static function compact(int $statusCode, $data = [])
     {
         $response = new \Slim\Http\Response();
 
         $returnData = [
             'status' => true,
             'code' => $statusCode,
-            'message' => $message,
             'data' => $data
         ];
 

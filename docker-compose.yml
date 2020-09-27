@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  nginx:
+    build: docker/nginx
+    ports:
+      - 8080:80
+    volumes_from:
+      - app
+  app:
+    command: "true"
+    image: alpine:3.4
+    volumes:
+      - .:/var/www/app
+  php:
+    build: docker/php
+    expose:
+      - 9000
+    volumes:
+      - composer-cache:/composer/cache
+    volumes_from:
+      - app
+  slim-mysql:
+    image: mysql:5
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: proda
+volumes:
+  composer-cache:
+    driver: local

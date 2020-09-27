@@ -8,13 +8,13 @@ class Order
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $userCarts = \App\Models\Cart::with('category')
+        $userOrders = \App\Models\Cart::with('category')
             ->where('user_id', '=', (int)$args['userId'])
             ->where('has_purchased', '=', 1)
             ->get();
 
-        if ($userCarts->isNotEmpty()) {
-            return ResponseHelper::compact(200, $userCarts);
+        if ($userOrders->isNotEmpty()) {
+            return ResponseHelper::compact(200, $userOrders);
         }
 
         return ResponseHelper::error('an Error occurred!', 200);

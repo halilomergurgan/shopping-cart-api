@@ -11,9 +11,6 @@ class Get
             'headers' => ['Content-Type' => 'application/json']
         ]);
 
-        $response = $client->get('https://halil.free.beeceptor.com/products'
-        );
-
-        return $response;
+        return $client->get('https://halil.free.beeceptor.com/products');
     }
 }

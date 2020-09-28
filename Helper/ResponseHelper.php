@@ -17,7 +17,9 @@ class ResponseHelper
             'message' => $message,
         ];
 
-        return $response->withStatus($statusCode)->withHeader("Content-Type", "application/json")->withJson($returnData);
+        return $response->withStatus($statusCode)
+            ->withHeader("Content-Type", "application/json")
+            ->withJson($returnData);
     }
 
     /**
@@ -35,9 +37,16 @@ class ResponseHelper
 
         $response = new \Slim\Http\Response();
 
-        return $response->withStatus($statusCode)->withHeader("Content-Type", "application/json")->withJson($data);
+        return $response->withStatus($statusCode)
+            ->withHeader("Content-Type", "application/json")
+            ->withJson($data);
     }
 
+    /**
+     * @param int $statusCode
+     * @param array $data
+     * @return \Slim\Http\Response
+     */
     public static function compact(int $statusCode, $data = [])
     {
         $response = new \Slim\Http\Response();
@@ -48,6 +57,8 @@ class ResponseHelper
             'data' => $data
         ];
 
-        return $response->withStatus($statusCode)->withHeader("Content-Type", "application/json")->withJson($returnData);
+        return $response->withStatus($statusCode)
+            ->withHeader("Content-Type", "application/json")
+            ->withJson($returnData);
     }
 }
